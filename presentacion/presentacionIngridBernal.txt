@@ -1,0 +1,11 @@
+<html>
+	<head>
+		<title>Presentación Ingrid Bernal<title>
+	</head>
+
+	<body>
+        Mi nombre es Ingrid Bernal, tengo 26 años, vivo en el municipio de Madrid (Cundinamarca).
+        Algunos de mis pasatiempos favoritos son: cocinar, escuchar música, entre otros.
+        Muchas gracias, un gusto.
+	</body>
+</html>
