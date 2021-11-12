@@ -1,0 +1,11 @@
+<html>
+	<head>
+		<title>Presentación<title>
+	</head>
+
+	<body>
+		1.Me llamo Elkin David Tordecilla Avila
+		2.Ingeniero industrial y estudiante del técnico en programación de software.
+		3.Soy practicante en la empresa KONECTA en el área de automatización de pruebas.
+	</body>
+</html>
