@@ -1,0 +1,11 @@
+<html>
+    <head>
+        <title>Presentación Jose William Medina rodriguez<title>
+    </head>
+
+    <body>
+        Saludos a todos, Mi nombre es José William Medina Rodríguez tengo 35 años, de Bogotá, soy Administrador de Empresas, mi mayor pasatiempo es compartir con mi hijo y mi familia montar cicla pasear y jugar futbol, en el momento me encuentro trabajando en un establecimiento familiar abierto al público. 
+    </body>
+
+ </html>   
+
