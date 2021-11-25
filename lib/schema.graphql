@@ -1,4 +1,9 @@
 enum Estado {
+  Pendiente
+  Autorizado
+}
+
+enum Estado2 {
   Activo
   Inactivo
 }
@@ -9,19 +14,32 @@ enum Rol {
   Lider
 }
 
+enum Fase {
+  En_desarrollo
+  Finalizado
+}
+
 type Project {
   _id: ID
   nombre: String
-  description: String
   people: [User]
-  estado: Estado
+  objetivo_gral: String
+  objetivo_espcifico: String
+  presupuesto: Number
+  fase: Fase
+  estado: Estado2
 }
 
 type User {
   _id: ID!
-  name: String!
+  nombre: String!
+  apellidos: String!
+  ciudad: String
+  telefono: Number
   email: String!
+  password: String!
   rol: Rol
+  estado: Estado
 }
 
 type Query {
@@ -36,28 +54,45 @@ type Query {
 }
 
 input ProjectInput {
-  title: String!
-  teacher: String
-  description: String!
-  topic: String
-  estado: Estado
+  nombre: String!
+  people: [User]!
+  objetivo_gral: String
+  objetivo_espcifico: String
+  presupuesto: Number
+  fase: Fase
+  estado: Estado2
 }
 
 input ProjectEditInput {
-  title: String
-  teacher: String
-  description: String
-  topic: String
+  nombre: String
+  people: [User]
+  objetivo_gral: String
+  objetivo_espcifico: String
+  presupuesto: Number
+  fase: Fase
+  estado: Estado2
 }
 
 input UserInput {
-  name: String!
+  nombre: String!
+  apellidos: String!
+  ciudad: String
+  telefono: Number
   email: String!
+  password: String!
+  rol: Rol
+  estado: Estado
 }
 
 input UserEditInput {
-  name: String
+  nombre: String
+  apellidos: String
+  ciudad: String
+  telefono: Number
   email: String
+  password: String
+  rol: Rol
+  estado: Estado
 }
 
 type Mutation {
