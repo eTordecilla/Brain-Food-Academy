@@ -1,0 +1,74 @@
+enum Estado {
+  Activo
+  Inactivo
+}
+
+enum Rol {
+  Usuario
+  Administrador
+  Lider
+}
+
+type Project {
+  _id: ID
+  nombre: String
+  description: String
+  people: [User]
+  estado: Estado
+}
+
+type User {
+  _id: ID!
+  name: String!
+  email: String!
+  rol: Rol
+}
+
+type Query {
+  "Devuelve todos los Proyectos"
+  getProjects: [Project]
+  "Devolver un Proyecto"
+  getProject(id: ID!): Project
+  "Devuelve todos los Usuarios"
+  getUsers: [User]
+  "Devolver un Usuario"
+  getUser(id: ID!): User
+}
+
+input ProjectInput {
+  title: String!
+  teacher: String
+  description: String!
+  topic: String
+  estado: Estado
+}
+
+input ProjectEditInput {
+  title: String
+  teacher: String
+  description: String
+  topic: String
+}
+
+input UserInput {
+  name: String!
+  email: String!
+}
+
+input UserEditInput {
+  name: String
+  email: String
+}
+
+type Mutation {
+  "Crear un proyecto"
+  createProject(input: ProjectInput!): Project
+  "Edita un proyecto"
+  editProject(_id: ID!, input: ProjectEditInput): Project
+  "Crear un Usuario"
+  createUser(input: UserInput!): User
+  "Edita un Usuario"
+  editUser(_id: ID!, input: UserEditInput): User
+  "Adicionar una persona a un proyecto"
+  addPeople(projectID: ID!, personID: ID!): Project
+}
