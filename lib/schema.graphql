@@ -9,13 +9,14 @@ enum EstadoProject {
 }
 
 enum Rol {
-  Usuario
-  Administrador
-  Lider
+  usuario
+  admin
+  lider
+  estudiante
 }
 
 enum Fase {
-  En_desarrollo
+  en_desarrollo
   Finalizado
 }
 
@@ -98,10 +99,14 @@ type Mutation {
   createProject(input: ProjectInput!): Project
   "Edita un proyecto"
   editProject(_id: ID!, input: ProjectEditInput): Project
+  "Eliminar Proyecto"
+  deleteProject(_id: ID!): Boolean!
   "Crear un Usuario"
   createUser(input: UserInput!): User
   "Edita un Usuario"
   editUser(_id: ID!, input: UserEditInput): User
+  "Eliminar un Usuario"
+  deleteUser(_id: ID!): Boolean!
   "Adicionar una persona a un proyecto"
   addPeople(projectID: ID!, personID: ID!): Project
 }
