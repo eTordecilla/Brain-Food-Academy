@@ -25,7 +25,7 @@ type Project {
   nombre: String
   objetivo_gral: String
   objetivo_espcifico: String
-  presupuesto: Int
+  presupuesto: String
   fase: Fase
   estado: EstadoProject
   people: [User]
@@ -36,7 +36,7 @@ type User {
   nombre: String!
   apellidos: String!
   ciudad: String
-  telefono: Int!
+  telefono: String!
   email: String!
   password: String!
   rol: Rol
@@ -58,7 +58,7 @@ input ProjectInput {
   nombre: String!
   objetivo_gral: String
   objetivo_espcifico: String
-  presupuesto: Int
+  presupuesto: String
   fase: Fase
   estado: EstadoProject
 }
@@ -67,7 +67,7 @@ input ProjectEditInput {
   nombre: String
   objetivo_gral: String
   objetivo_espcifico: String
-  presupuesto: Int
+  presupuesto: String
   fase: Fase
   estado: EstadoProject
 }
@@ -76,7 +76,7 @@ input UserInput {
   nombre: String!
   apellidos: String!
   ciudad: String
-  telefono: Int!
+  telefono: String!
   email: String!
   password: String!
   rol: Rol
@@ -87,7 +87,7 @@ input UserEditInput {
   nombre: String
   apellidos: String
   ciudad: String
-  telefono: Int
+  telefono: String
   email: String
   password: String
   rol: Rol
