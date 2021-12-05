@@ -1,0 +1,179 @@
+enum EstadoUser {
+  pendiente
+  autorizado
+  no_Autorizado
+}
+
+enum EstadoProject {
+  Activo
+  Inactivo
+}
+
+enum EstadoInscipcion {
+  aceptada
+  rechazada
+}
+
+enum Rol {
+  administrador
+  lider
+  estudiante
+}
+
+enum Fase {
+  iniciado
+  en_desarrollo
+  terminado
+}
+
+type Project {
+  _id: ID!
+  nombre: String!
+  objetivo_gral: String
+  objetivo_especifico: String
+  presupuesto: String
+  fecha_inicio: String!
+  fecha_fin: String
+  people: [User]
+  estado: EstadoProject
+  fase: Fase
+}
+
+type User {
+  _id: ID!
+  nombre: String!
+  identificacion: String!
+  email: String!
+  password: String!
+  rol: Rol
+  estado: EstadoUser
+}
+
+type Inscripcion {
+  _id: ID!
+  project: [Project]
+  people: [User]
+  estado: EstadoInscipcion
+  fecha_ingreso: String
+  fecha_egreso: String
+}
+
+type Avance {
+  _id: ID!
+  project: [Project]
+  fecha_avance: String
+  descripcion: String
+  observaciones: String
+}
+
+type Query {
+  "Devuelve todos los Proyectos"
+  getProjects: [Project]
+  "Devolver un Proyecto"
+  getProject(id: ID!): Project
+  "Devuelve todos los Usuarios"
+  getUsers: [User]
+  "Devolver un Usuario"
+  getUser(id: ID!): User
+  "Devuelve todos las Inscripciones"
+  getInscripcions: [Inscripcion]
+  "Devolver una Inscripcion"
+  getInscripcion(id: ID!): Inscripcion
+  "Devuelve todos los Avances"
+  getAvances: [Avance]
+  "Devolver un Avance"
+  getAvance(id: ID!): Avance
+}
+
+input ProjectInput {
+  nombre: String!
+  objetivo_gral: String
+  objetivo_especifico: String
+  presupuesto: String
+  fecha_inicio: String!
+  fecha_fin: String
+  estado: EstadoProject
+  fase: Fase
+}
+
+input ProjectEditInput {
+  nombre: String
+  objetivo_gral: String
+  objetivo_especifico: String
+  presupuesto: String
+  fecha_fin: String
+}
+
+input UserInput {
+  nombre: String!
+  identificacion: String!
+  email: String!
+  password: String!
+  rol: Rol
+}
+
+input UserEditInput {
+  nombre: String
+  identificacion: String
+  email: String
+  password: String
+}
+
+input InscripcionInput {
+  estado: EstadoInscipcion
+  fecha_ingreso: String
+  fecha_egreso: String
+}
+
+input InscripcionEditInput {
+  estado: EstadoInscipcion
+  fecha_ingreso: String
+  fecha_egreso: String
+}
+
+input AvanceInput {
+  fecha_avance: String
+  descripcion: String
+  observaciones: String
+}
+
+input AvanceEditInput {
+  fecha_avance: String
+  descripcion: String
+  observaciones: String
+}
+
+type Mutation {
+  "Crear un proyecto"
+  createProject(input: ProjectInput!): Project
+  "Edita un proyecto"
+  editProject(_id: ID!, input: ProjectEditInput): Project
+  "Eliminar Proyecto"
+  deleteProject(_id: ID!): Boolean!
+  "Crear un Usuario"
+  createUser(input: UserInput!): User
+  "Edita un Usuario"
+  editUser(_id: ID!, input: UserEditInput): User
+  "Eliminar un Usuario"
+  deleteUser(_id: ID!): Boolean!
+  "Crear una Inscripción"
+  createInscripcion(input: InscripcionInput!): Inscripcion
+  "Edita una Inscripción"
+  editInscripcion(_id: ID!, input: InscripcionEditInput): Inscripcion
+  "Eliminar una Inscripción"
+  deleteInscripcion(_id: ID!): Boolean!
+  "Crear un Avance"
+  createAvance(input: AvanceInput!): Avance
+  "Edita un Avance"
+  editAvance(_id: ID!, input: AvanceEditInput): Avance
+  "Eliminar un Avance"
+  deleteAvance(_id: ID!): Boolean!
+  "Adicionar una persona a un proyecto"
+  addUserProject(projectID: ID!, personID: ID!): Project
+  "Adicionar una persona a una inscripción"
+  addUserInscripcion(inscripcionID: ID!, personID: ID!): Inscripcion
+  "Adicionar una proyecto a una inscripción"
+  addProjectInscripcion(inscripcionID: ID!, projectID: ID!): Inscripcion
+  "Adicionar una proyecto a un avance"
+  addProjectAvance(avanceID: ID!, projectID: ID!): Inscripcion
+}
